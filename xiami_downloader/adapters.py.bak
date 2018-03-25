@@ -1,4 +1,4 @@
-import urllib.request, urllib.error, urllib.parse
+import urllib2
 import subprocess
 import sys
 
@@ -19,10 +19,10 @@ def get_downloader(name=None):
 
 
 def urllib2_downloader(url, dest, headers):
-    request = urllib.request.Request(url)
+    request = urllib2.Request(url)
     for h in headers:
         request.add_header(h, headers[h])
-    response = urllib.request.urlopen(request)
+    response = urllib2.urlopen(request)
     length = int(response.headers['Content-Length'])
     downloaded = 0.0
     with open(dest, 'wb') as output:
